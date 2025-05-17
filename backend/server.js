@@ -1,9 +1,11 @@
 require('rootpath')();
 const express = require('express');
-const app = express();
+const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const cors = require('cors');
 const errorHandler = require('./_middleware/error-handler');
 
 // Get the frontend URL from environment variable or use default
@@ -43,6 +45,9 @@ app.use((req, res, next) => {
     next();
 });
 
+// Swagger documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 // api routes
 app.use('/accounts', require('./accounts/account.controller'));
 app.use('/departments', require('./departments/index'));
@@ -50,8 +55,10 @@ app.use('/employees', require('./employees/index'));
 app.use('/workflows', require('./workflows/index'));
 app.use('/requests', require('./requests/index'));  // Make sure this is added
 
-// swagger docs route
-app.use('/api-docs', require('./_helpers/swagger'));
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
 
 // global error handler
 app.use((err, req, res, next) => {
@@ -106,5 +113,7 @@ app.use((err, req, res, next) => {
 });
 
 // start server
-const port = process.env.PORT || 4001;
-app.listen(port, () => console.log('Server listening on port ' + port));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
