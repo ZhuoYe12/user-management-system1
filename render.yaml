@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: angular-signup-verification
+    env: node
+    buildCommand: cd angular-signup-verification-boilerplate && npm install && npm run build
+    startCommand: cd angular-signup-verification-boilerplate && npx serve -s dist/angular-signup-verification-boilerplate
+    envVars:
+      - key: NODE_VERSION
+        value: 18.0.0 
