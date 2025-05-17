@@ -11,6 +11,7 @@ services:
         value: https://user-management-api.onrender.com
     healthCheckPath: /
     autoDeploy: true
+    plan: free
 
   - type: web
     name: user-management-api
@@ -38,6 +39,7 @@ services:
         value: "christiandhave3@gmail.com"
     healthCheckPath: /api/health
     autoDeploy: true
+    plan: free
 
 databases:
   - name: postgres-db
