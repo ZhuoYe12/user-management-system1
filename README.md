@@ -340,18 +340,6 @@ const passwordSchema = Joi.string()
 - Minimum length of 8 characters
 - Provides clear error messages
 
-## Contributing
-* **Durano, Jhanna Kris** : Responsible for managing the main branch, reviewing pull requests, and ensuring smooth integration.
-Backend Developers (2 members):
-* **Real, Rovic Steve**: Implement email sign-up, verification, and authentication. In continuation, implemented workflows and requests.
-* **Ocliasa, Niño Rollane**: Implement role-based authorization, forgot password/reset password, and CRUD operations. In continuation, implemented employees and departments.
-Frontend Developers (2 members):
-* **Durano, Jhanna Kris**: Implement email sign-up, verification, and authentication. In continuation, implemented the fake backend.
-* **Arcana, Sean Joseph**: Implement profile management, admin dashboard, and fake backend. In continuation, implemented the structure of ui (html).
-Testers (2 members):
-* **Real, Rovic Steve**:: Perform functional testing and validate user flows.
-* **Ocliasa, Niño Rollane**: Perform security testing and validate edge cases.
-
 ## License
 ### MIT License
 
@@ -383,12 +371,4 @@ Testers (2 members):
 - Resolved merge conflicts.
 4. Comprehensive **README.md documentation** covering installation, usage, testing, and contributing guidelines.
 5. Test reports from **testers** ensuring the application is functional and secure.
----
-### **Evaluation Criteria**
-Each team member will be evaluated individually based on:
-1. **Code Quality:** Clean, modular, and well-documented code.
-2. **Functionality:** Correct implementation of assigned features.
-3. **Collaboration:** Effective use of Git and GitHub for collaboration.
-4. **Problem-Solving:** Ability to resolve merge conflicts and debug issues.
-5. **Testing:** Thoroughness of testing and quality of test reports.
 ---
