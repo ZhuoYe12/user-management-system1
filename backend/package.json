@@ -18,7 +18,9 @@
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",
     "pg": "^8.10.0",
+    "pg-hstore": "^2.3.4",
     "rootpath": "^0.1.2",
+    "sequelize": "^6.35.2",
     "swagger-ui-express": "^4.6.2",
     "yamljs": "^0.3.0"
   },
