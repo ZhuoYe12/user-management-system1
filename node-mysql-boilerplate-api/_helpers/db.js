@@ -1,5 +1,4 @@
-const config = require('config.json');
-const mysql = require('mysql2/promise');
+const config = require('../config.json');
 const { Sequelize } = require('sequelize');
 
 module.exports = db = {};
@@ -8,31 +7,34 @@ initialize();
 
 async function initialize() {
     try {
-        // create db if it doesn't already exist
+        // connect to db
         const { host, port, user, password, database } = config.database;
         console.log(`Connecting to database: ${database} on ${host}:${port}`);
         
-        const connection = await mysql.createConnection({ 
-            host, 
-            port, 
-            user, 
-            password 
-        });
-        
-        await connection.query(`CREATE DATABASE IF NOT EXISTS \`${database}\`;`);
-        console.log(`Database '${database}' exists or was created`);
-
-        // connect to db
         const sequelize = new Sequelize(database, user, password, { 
             host, 
             port, 
-            dialect: 'mysql',
-            logging: console.log, // Enable logging to debug
+            dialect: 'postgres',
+            logging: console.log,
             define: {
-                // Globally disable automatic timestamps
                 timestamps: false
+            },
+            dialectOptions: {
+                ssl: {
+                    require: true,
+                    rejectUnauthorized: false
+                }
             }
         });
+
+        // Test the connection
+        try {
+            await sequelize.authenticate();
+            console.log('Database connection has been established successfully.');
+        } catch (error) {
+            console.error('Unable to connect to the database:', error);
+            throw error;
+        }
 
         // init models and add them to the exported db object
         console.log('Initializing models...');
@@ -109,10 +111,6 @@ async function initialize() {
 
         // sync all models with database
         console.log('Syncing models with database...');
-        
-        // Use force: false to avoid dropping tables
-        // Use alter: false to avoid modifying tables
-        // After running the reset script, we can safely set both to false
         await sequelize.sync({ force: false, alter: false });
         console.log('Database sync complete');
     } catch (error) {

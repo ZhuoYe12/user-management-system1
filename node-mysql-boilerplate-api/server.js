@@ -6,9 +6,11 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const errorHandler = require('./_middleware/error-handler');
 
+// Get the frontend URL from environment variable or use default
+const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:4200';
 
 app.use(cors({
-  origin: 'http://localhost:4200', // Angular app URL
+  origin: frontendUrl,
   credentials: true
 }));
 
@@ -104,5 +106,5 @@ app.use((err, req, res, next) => {
 });
 
 // start server
-const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 4000;
+const port = process.env.PORT || 4000;
 app.listen(port, () => console.log('Server listening on port ' + port));
