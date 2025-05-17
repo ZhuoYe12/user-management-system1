@@ -1,14 +1,24 @@
 {
   "version": 2,
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
   "builds": [
     {
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist/angular-signup-verification-boilerplate",
-        "buildCommand": "npm run build",
-        "devCommand": "npm start",
-        "installCommand": "npm install"
+        "distDir": "dist/user-management-system"
       }
     }
   ],
