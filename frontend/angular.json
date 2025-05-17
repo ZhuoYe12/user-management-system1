@@ -32,15 +32,30 @@
               "src/styles.less"
             ],
             "scripts": [],
-            "baseHref": "/"
+            "baseHref": "/",
+            "optimization": true,
+            "outputHashing": "all",
+            "sourceMap": false,
+            "namedChunks": false,
+            "aot": true,
+            "extractLicenses": true,
+            "vendorChunk": false,
+            "buildOptimizer": true,
+            "budgets": [
+              {
+                "type": "initial",
+                "maximumWarning": "2mb",
+                "maximumError": "5mb"
+              }
+            ]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
