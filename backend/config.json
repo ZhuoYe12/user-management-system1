@@ -1,0 +1,19 @@
+{
+    "database": {
+      "host": "switchback.proxy.rlwy.net",
+      "port": 18439,
+      "user": "postgres",
+      "password": "mRRWKpCxvltpPLyjGHqTNREUuQeZbwPP",
+      "database": "railway"
+    },
+    "secret": "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING",
+    "emailFrom": "christiandhave3@gmail.com",
+    "smtpOptions": {
+      "host": "smtp.gmail.com",
+      "port": 587,
+      "auth": {
+        "user": "christiandhave3@gmail.com",
+        "pass": "dkah vtre czrv atme"
+      }
+    }
+  }
