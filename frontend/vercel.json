@@ -13,24 +13,18 @@
   "routes": [
     {
       "src": "/assets/(.*)",
-      "dest": "/assets/$1",
       "headers": {
         "cache-control": "public, max-age=31536000, immutable"
-      }
+      },
+      "continue": true
     },
     {
       "src": "/favicon.ico",
-      "dest": "/favicon.ico",
-      "headers": {
-        "cache-control": "public, max-age=31536000, immutable"
-      }
+      "dest": "/assets/favicon.ico"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html",
-      "headers": {
-        "cache-control": "no-cache, no-store, must-revalidate"
-      }
+      "dest": "/index.html"
     }
   ],
   "headers": [
