@@ -164,10 +164,6 @@ For support, email [your-email@example.com] or open an issue in the GitHub repos
 - Angular Material for the UI components
 - Node.js community for the backend framework
 - PostgreSQL for the database
-
-## Testing
-### **Functional testing results:** [https://docs.google.com/document/d/1zkrHnNJTvbq-L289UgOpzY6RdiAnttoRgajw37rYZjw/edit?tab=t.0]
-
 ---
 ### **Security Testing Documentation**
 #### 1. XSS (Cross-Site Scripting)
