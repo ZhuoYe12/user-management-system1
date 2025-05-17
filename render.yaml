@@ -1,45 +1,39 @@
 services:
   - type: web
-    name: angular-signup-verification-frontend
+    name: user-management-frontend
     env: node
-    buildCommand: cd angular-signup-verification-boilerplate && npm install && npm run build
-    startCommand: cd angular-signup-verification-boilerplate && npx serve -s dist/angular-signup-verification-boilerplate
+    buildCommand: cd frontend && npm install && npm run build
+    startCommand: cd frontend && npx serve -s dist/user-management-system
     envVars:
       - key: NODE_VERSION
         value: 18.0.0
       - key: API_URL
-        value: https://angular-signup-verification-api.onrender.com
+        value: https://user-management-api.onrender.com
 
   - type: web
-    name: angular-signup-verification-api
+    name: user-management-api
     env: node
-    buildCommand: cd node-mysql-boilerplate-api && npm install
-    startCommand: cd node-mysql-boilerplate-api && node server.js
+    buildCommand: cd backend && npm install && npm run build
+    startCommand: cd backend && npm start
     envVars:
       - key: NODE_VERSION
         value: 18.0.0
       - key: FRONTEND_URL
-        value: https://angular-signup-verification-frontend.onrender.com
-      - key: DB_HOST
-        value: switchback.proxy.rlwy.net
-      - key: DB_PORT
-        value: 18439
-      - key: DB_USER
-        value: postgres
-      - key: DB_PASSWORD
-        value: mRRWKpCxvltpPLyjGHqTNREUuQeZbwPP
-      - key: DB_NAME
-        value: railway
+        value: https://user-management-frontend.onrender.com
+      - key: DATABASE_URL
+        value: ${{ Postgres-7Wqe.DATABASE_URL }}
       - key: JWT_SECRET
-        generateValue: true
+        value: "your-secret-key"
       - key: SMTP_HOST
-        value: smtp.gmail.com
+        value: "smtp.gmail.com"
       - key: SMTP_PORT
-        value: 587
+        value: "587"
       - key: SMTP_USER
-        sync: false  # Add your Gmail address here
+        value: "christiandhave3@gmail.com"
       - key: SMTP_PASS
-        sync: false  # Add your Gmail app password here
+        value: "dkah vtre czrv atme"
+      - key: EMAIL_FROM
+        value: "christiandhave3@gmail.com"
 
 databases:
   - name: postgres-db

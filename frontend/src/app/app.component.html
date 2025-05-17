@@ -1,0 +1,43 @@
+<!-- Main Container -->
+<div class="app-container" [ngClass]="{ 'bg-light': account }">
+    <!-- Simple Navigation Bar -->
+    <nav class="navbar navbar-expand navbar-dark bg-primary" *ngIf="account">
+        <div class="container">
+            <a class="navbar-brand" routerLink="/">
+                <i class="fas fa-users me-2"></i>
+                User Management
+            </a>
+            
+            <div class="navbar-nav ms-auto">
+                <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" 
+                   class="nav-link">
+                    <i class="fas fa-home me-1"></i> Home
+                </a>
+                <a routerLink="/profile" routerLinkActive="active" class="nav-link">
+                    <i class="fas fa-user me-1"></i> Profile
+                </a>
+                <a *ngIf="account.role === Role.Admin" routerLink="/admin" routerLinkActive="active" class="nav-link">
+                    <i class="fas fa-cog me-1"></i> Admin
+                </a>
+                <a (click)="logout()" class="nav-link" style="cursor: pointer;">
+                    <i class="fas fa-sign-out-alt me-1"></i> Logout
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Global Alert -->
+    <alert></alert>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <router-outlet></router-outlet>
+    </main>
+
+    <!-- Simple Footer -->
+    <footer class="footer py-3 bg-light" *ngIf="account">
+        <div class="container text-center">
+            <span class="text-muted">© 2025 User Management System</span>
+        </div>
+    </footer>
+</div>
