@@ -5,11 +5,23 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist/user-management-system"
+        "distDir": "dist/user-management-system",
+        "buildCommand": "npm run build -- --configuration production"
       }
     }
   ],
   "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/favicon.ico"
+    },
     {
       "src": "/(.*)",
       "dest": "/index.html"
