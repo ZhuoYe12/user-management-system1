@@ -4,12 +4,12 @@ A modern user management system built with Angular and Node.js, featuring user a
 
 ## Features
 
-- ≡ƒöÉ Secure user authentication
-- ≡ƒôº Email verification system
-- ≡ƒæÑ User management dashboard
-- ≡ƒöæ Role-based access control
-- ≡ƒô▒ Responsive design
-- ≡ƒöä Real-time updates
+- 🔐 Secure user authentication
+- 📧 Email verification system
+- 👥 User management dashboard
+- 🔑 Role-based access control
+- 📱 Responsive design
+- 🔄 Real-time updates
 
 ## Tech Stack
 
