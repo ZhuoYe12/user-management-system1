@@ -3,8 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiUrl: 'https://user-management-system-qesl.onrender.com'
+  production: true,
+  apiUrl: 'https://user-management-system-backend.vercel.app',
+  appName: 'User Management System',
+  version: '1.0.0',
+  defaultLanguage: 'en',
+  supportedLanguages: ['en'],
+  debug: false
 };
 
 /*

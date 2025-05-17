@@ -10,13 +10,27 @@ const errorHandler = require('./_middleware/error-handler');
 
 const app = express();
 
-// Get the frontend URL from environment variable or use default
-const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:4200';
+// Get the frontend URLs from environment variable or use defaults
+const allowedOrigins = [
+    'https://user-management-system-nine.vercel.app',
+    'http://localhost:4200'
+];
 
 // Configure CORS
 app.use(cors({
-    origin: frontendUrl,
-    credentials: true
+    origin: function(origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,7 +43,8 @@ app.use((req, res, next) => {
     const requestInfo = {
         method: req.method,
         path: req.path,
-        ip: req.ip
+        ip: req.ip,
+        origin: req.headers.origin
     };
     
     if (req.method === 'POST' || req.method === 'PUT') {
@@ -60,7 +75,11 @@ app.use('/requests', require('./requests/index'));
 
 // Health check endpoint
 app.get('/health', (req, res) => {
-    res.json({ status: 'ok' });
+    res.json({ 
+        status: 'ok',
+        database: 'connected',
+        timestamp: new Date().toISOString()
+    });
 });
 
 // global error handler
@@ -70,5 +89,5 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
-    console.log(`Frontend URL: ${frontendUrl}`);
+    console.log('Allowed origins:', allowedOrigins);
 });
