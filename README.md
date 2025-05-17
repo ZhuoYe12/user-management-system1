@@ -1,41 +1,169 @@
 # User Management System
 
-##  Introduction
-A full-stack application for managing user accounts with features like email sign-up, verification, authentication, role-based authorization, and CRUD operations.
+A modern user management system built with Angular and Node.js, featuring user authentication, role-based access control, and email verification.
+
+## Features
+
+- 🔐 Secure user authentication
+- 📧 Email verification system
+- 👥 User management dashboard
+- 🔑 Role-based access control
+- 📱 Responsive design
+- 🔄 Real-time updates
+
+## Tech Stack
+
+### Frontend
+- Angular 17
+- Angular Material
+- TypeScript
+- SCSS
+
+### Backend
+- Node.js
+- Express.js
+- PostgreSQL
+- JWT Authentication
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+- Node.js (v18.0.0 or higher)
+- npm (v9.0.0 or higher)
+- PostgreSQL (v14 or higher)
+- Git
 
 ## Installation
-Follow these steps to set up project locally.
 
-### 1. Clone the repository. 
-
+### 1. Clone the Repository
+```bash
+git clone https://github.com/ZhuoYe12/user-management-system1.git
+cd user-management-system1
 ```
-git clone https://github.com/phloxxx/user-management-system.git
-```
 
-### 2. Install dependencies:
-
-```
+### 2. Frontend Setup
+```bash
+cd frontend
 npm install
-npm run install:backend
-npm run install:frontend
 ```
 
-### 3. Start the backend server:
-
+### 3. Backend Setup
+```bash
+cd backend
+npm install
 ```
+
+### 4. Environment Configuration
+
+#### Frontend (.env)
+Create a `.env` file in the frontend directory:
+```env
+API_URL=http://localhost:3000
+```
+
+#### Backend (.env)
+Create a `.env` file in the backend directory:
+```env
+PORT=3000
+DATABASE_URL=postgresql://username:password@localhost:5432/user_management_db
+JWT_SECRET=your-secret-key
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
+EMAIL_FROM=your-email@gmail.com
+```
+
+### 5. Database Setup
+1. Create a PostgreSQL database named `user_management_db`
+2. Run the database migrations:
+```bash
+cd backend
+npm run migrate
+```
+
+## Running the Application
+
+### Development Mode
+
+1. Start the Backend Server:
+```bash
+cd backend
+npm run dev
+```
+
+2. Start the Frontend Development Server:
+```bash
+cd frontend
 npm start
 ```
 
-### 4. Start the Angular app:
+The application will be available at:
+- Frontend: http://localhost:4200
+- Backend API: http://localhost:3000
 
-```
-ng serve
+## Deployment
+
+### Deploying to Vercel (Frontend)
+
+1. Install Vercel CLI:
+```bash
+npm install -g vercel
 ```
 
-## Usage
-* Register a new account at */accounts/register*.
-* Verify your email using the link sent to your inbox.
-* Log in at */accounts/login*.
+2. Deploy the Frontend:
+```bash
+cd frontend
+vercel
+```
+
+### Deploying to Render (Backend)
+
+1. Create a new Web Service on Render
+2. Connect your GitHub repository
+3. Configure the following settings:
+   - Build Command: `npm install && npm run build`
+   - Start Command: `npm start`
+   - Environment Variables: Add all variables from your backend `.env` file
+
+## API Documentation
+
+### Authentication Endpoints
+
+- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/login` - Login user
+- `POST /api/auth/verify-email` - Verify user email
+- `POST /api/auth/forgot-password` - Request password reset
+- `POST /api/auth/reset-password` - Reset password
+
+### User Management Endpoints
+
+- `GET /api/users` - Get all users
+- `GET /api/users/:id` - Get user by ID
+- `PUT /api/users/:id` - Update user
+- `DELETE /api/users/:id` - Delete user
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+For support, email [your-email@example.com] or open an issue in the GitHub repository.
+
+## Acknowledgments
+
+- Angular Material for the UI components
+- Node.js community for the backend framework
+- PostgreSQL for the database
 
 ## Testing
 ### **Functional testing results:** [https://docs.google.com/document/d/1zkrHnNJTvbq-L289UgOpzY6RdiAnttoRgajw37rYZjw/edit?tab=t.0]
