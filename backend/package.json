@@ -9,11 +9,14 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "pg": "^8.10.0",
+    "rootpath": "^0.1.2",
     "swagger-ui-express": "^4.6.2",
     "yamljs": "^0.3.0"
   },
