@@ -9,6 +9,8 @@ services:
         value: 18.0.0
       - key: API_URL
         value: https://user-management-api.onrender.com
+    healthCheckPath: /
+    autoDeploy: true
 
   - type: web
     name: user-management-api
@@ -21,7 +23,7 @@ services:
       - key: FRONTEND_URL
         value: https://user-management-frontend.onrender.com
       - key: DATABASE_URL
-        value: ${{ Postgres-7Wqe.DATABASE_URL }}
+        value: ${{ postgres-db.DATABASE_URL }}
       - key: JWT_SECRET
         value: "your-secret-key"
       - key: SMTP_HOST
@@ -34,9 +36,11 @@ services:
         value: "dkah vtre czrv atme"
       - key: EMAIL_FROM
         value: "christiandhave3@gmail.com"
+    healthCheckPath: /api/health
+    autoDeploy: true
 
 databases:
   - name: postgres-db
-    databaseName: railway
+    databaseName: user_management_db
     user: postgres
     plan: free 
